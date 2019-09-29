@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+
+		//A
+		var name; var nota1; var nota2; var nota3;
+
+		name = prompt("Nombre del alumno:");
+		nota1 = prompt("Nota 1:")
+		nota2 = prompt("Nota 2:")
+		nota3 = prompt("Nota 3:")
+
+		var media = (parseInt(nota1)+parseInt(nota2)+parseInt(nota3)) / 3;
+
+		if (media < 5){
+			document.write(name + " ha suspendido.");
+		}else{
+			document.write(name + " ha aprobado.");
+		}
+
+
+		//B
+		var email1; var email2;
+
+		email1 = prompt("Introduzca su email");
+		email2 = prompt("Repita el email");
+
+		if (email1 != email2){
+			document.write("<br/>El email no coincide")
+		}
+
+
+		//C
+		var age;
+
+		age = prompt("Edad del sujeto");
+
+		parseInt(age);
+
+		if(age < 65 && age > 18){
+			document.write("<br/>Puede trabajar");
+		}else{
+			document.write("<br/>No puede trabajar");
+		}
+
+
+		//D
+		if (age % 2 == 0){
+			document.write("<br/>La edad del trabajador es par")
+		}else{
+			document.write("<br/>La edad es impar");
+		}
+
+	</script>
+		
+		
+</body>
+</html>

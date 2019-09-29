@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+
+		//A
+		var num1; var num2; var num3; var biggest;
+
+		num1 = prompt("Número 1");
+		num2 = prompt("Número 2");
+		num3 = prompt("Número 3");
+
+		parseInt(num1);
+		parseInt(num2);
+		parseInt(num3);
+
+		biggest = num1;
+
+		if (biggest < num2){
+			biggest = num2;
+		}
+
+		if (biggest < num3){
+			biggest = num3;
+		}
+
+		document.write("El mayor número introducido es: " + biggest);
+
+
+		//B
+		var minium;
+
+		minium = num1;
+
+		if (minium > num2){
+			minium = num2;
+		}
+
+		if (minium > num3){
+			minium = num3;
+		}
+		document.write("<br/>");
+		document.write("El menor número introducido es: " + minium);
+
+
+		//C
+		var cont = 1; var digitos;
+
+		digitos = prompt("Introduzca el número para contar sus dígitos:")
+
+		parseInt(digitos);
+		var temp = digitos;
+
+		while ( digitos > 10){
+			digitos /= 10;
+			cont++;
+		}
+		document.write("<br/>");
+		document.write("El número " + temp + " tiene " + cont + " dígitos");
+
+
+		//D
+		var num;
+
+		num = prompt("Introduzca un número:");
+
+		parseInt(num);
+
+		switch (num){
+			case num < 0:
+				document.write("El " + num + " es negativo.");
+				break;
+			case num == 0:
+				document.write("El " + num + " es 0.");
+				break;
+			case num > 0:
+				document.write("El " + num + " es positivo.");
+				break;
+		}
+
+	</script>
+		
+		
+</body>
+</html>

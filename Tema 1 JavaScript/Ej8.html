@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+
+		//A
+		var day; var month; var year;
+
+		day = prompt ("Introduzca el día:");
+		month = prompt ("del mes: ");
+		year = prompt ("del año: ");
+
+		parseInt(day);
+		parseInt(month);
+		parseInt(year);
+
+		if ( day == 25 && month == 12 ){
+			document.write("Hoy es Navidad!!!");
+		}
+
+
+		//B
+		var num1; var num2; var num3;
+
+		num1 = prompt("Número 1");
+		num2 = prompt("Número 2");
+		num3 = prompt("Número 3");
+
+		parseInt(num1);
+		parseInt(num2);
+		parseInt(num3);
+
+		if ( num1 < 10 && num2 < 10 && num3 < 10){
+			document.write("Todos son menores de 10");
+		}
+
+
+		//C
+		var x; var y;
+
+		x = prompt("Coordenada X");
+		y = prompt("Coordenada Y");
+
+		parseInt(x);
+		parseInt(y);
+
+		if ( x > 0 ){
+			if ( y > 0){
+				document.write("Primer cuadrante");
+			}else{
+				document.write("Cuarto cuadrante");
+			}
+		}else{
+			if ( y > 0){
+				document.write("Segundo cuadrante");
+			}else{
+				document.write("Tercer cuadrante");
+			}
+		}
+
+
+		//D
+		var salary; var years;
+
+		salary = prompt("Salario");
+		years = prompt("Tiempo en la empresa");
+
+		parseInt(salary);
+		parseInt(years);
+
+		if ( salary < 500 ){
+			if ( years > 9 ){
+				document.write("Su salario se incrementa un 20%");
+				salary *= 1.2;
+				document.write(" Ahora es de " + salary);
+			} else {
+				document.write("Su salario se incrementa un 5%");
+				salary *= 1.05;
+				document.write(" Ahora es de " + salary);
+			}
+		}else{
+			document.write("No hay incremento salarial");
+		}	
+
+
+		//E
+		var n1; var n2; var n3;
+
+		n1 = prompt("Número 1");
+		n2 = prompt("Número 2");
+		n3 = prompt("Número 3");
+
+		parseInt(n1);
+		parseInt(n2);
+		parseInt(n3);
+
+		if ( n1 < 10 || n2 < 10 || n3 < 10){
+			document.write("Algún número es menor de 10");
+		}
+
+
+	</script>
+		
+		
+</body>
+</html>

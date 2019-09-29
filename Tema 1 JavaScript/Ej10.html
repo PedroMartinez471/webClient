@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+
+		//A
+		var num = 1;
+		while ( num < 51 ){
+			
+			document.write(num + "<br/>");
+			num++;
+
+		}
+
+		while ( num > 0 ){
+
+			document.write(num + "<br/>");
+			num--;
+
+		}
+
+		num = -50;
+
+		while ( num <= 0 ){
+
+			document.write(num + "<br/>");
+			num++;
+
+		}
+
+
+		//B
+		num = 1;
+
+		while ( num < 101){
+			if ( num % 2 == 0 ){
+				document.write(num + "<br/>");
+
+			}
+			num++;
+
+		}
+
+
+		//C
+		var cont = 0; var temp; var contDig;
+		var num = 1;
+
+		while (cont < 25){
+            num++;
+            temp = num;
+            contDig = 1;
+            
+            while ( temp > 10){
+                temp /= 10;
+				contDig++;
+            }
+            
+            switch (contDig){
+                case 1:
+                    break;
+                    
+                case 2:
+                    if ( num % 10 == num / 10 ){
+                        cont++;
+                        document.write(num);
+                    }
+                    break;
+                    
+                case 3:
+                    if ( num % 10 == num / 100 ){
+                        temp = num;
+                        temp /= 10;
+                        if ( temp % 10 == temp / 10){
+                            cont++;
+                            document.write(num);
+                        }
+                    }
+                    break;
+                    
+                case 4:
+                    if ( num % 10 == num / 1000 ){
+                        temp = num;
+                        temp /= 10;
+                        if ( temp % 10 == temp / 100){
+                            temp /= 10;
+                            if( temp % 10 == temp / 10 ){
+                                cont++;
+                                document.write(num);
+                            }
+                        }
+                    }
+                    break;
+                    
+            }
+
+        }
+
+	</script>
+		
+		
+</body>
+</html>
