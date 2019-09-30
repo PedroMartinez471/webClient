@@ -46,16 +46,18 @@
 
 
 		//C
+
+		document.write("C <br>")
 		var cont = 0; var temp; var contDig;
 		var num = 1;
 
-		while (cont < 25){
+		/*while (cont < 25){
             num++;
             temp = num;
             contDig = 1;
             
             while ( temp > 10){
-                temp /= 10;
+                Math.floor(temp /= 10);
 				contDig++;
             }
             
@@ -64,17 +66,17 @@
                     break;
                     
                 case 2:
-                    if ( num % 10 == num / 10 ){
+                    if ( num % 10 == Math.floor(num / 10) ){
                         cont++;
                         document.write(num);
                     }
                     break;
                     
                 case 3:
-                    if ( num % 10 == num / 100 ){
+                    if ( num % 10 == Math.floor(num / 100) ){
                         temp = num;
-                        temp /= 10;
-                        if ( temp % 10 == temp / 10){
+                        Math.floor(temp /= 10);
+                        if ( temp % 10 == Math.floor(temp / 10)){
                             cont++;
                             document.write(num);
                         }
@@ -82,12 +84,12 @@
                     break;
                     
                 case 4:
-                    if ( num % 10 == num / 1000 ){
+                    if ( num % 10 == Math.floor(num / 1000 )){
                         temp = num;
-                        temp /= 10;
-                        if ( temp % 10 == temp / 100){
-                            temp /= 10;
-                            if( temp % 10 == temp / 10 ){
+                        Math.floor(temp /= 10);
+                        if ( temp % 10 == Math.floor(temp / 100)){
+                            Math.floor(temp /= 10);
+                            if( temp % 10 == Math.floor(temp / 10) ){
                                 cont++;
                                 document.write(num);
                             }
@@ -97,6 +99,18 @@
                     
             }
 
+        }*/
+
+        while ( cont < 25 ){
+        	num++;
+
+        	temp = toString(num);
+
+        	contDig = temp.length;
+
+        	document.write(contDig);
+
+        	cont++;
         }
 
 	</script>
