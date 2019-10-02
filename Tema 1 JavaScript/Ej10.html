@@ -7,17 +7,20 @@
 	<script>
 
 		//A
+		document.write("A" + "<br/>")
 		var num = 1;
 		while ( num < 51 ){
 			
-			document.write(num + "<br/>");
+			document.write(num + " ");
 			num++;
 
 		}
 
+		document.write("<br/>")
+
 		while ( num > 0 ){
 
-			document.write(num + "<br/>");
+			document.write(num + " ");
 			num--;
 
 		}
@@ -26,18 +29,20 @@
 
 		while ( num <= 0 ){
 
-			document.write(num + "<br/>");
+			document.write(num + " ");
 			num++;
 
 		}
 
 
 		//B
+
+		document.write("<br/><br/> B" + "<br/>")
 		num = 1;
 
 		while ( num < 101){
 			if ( num % 2 == 0 ){
-				document.write(num + "<br/>");
+				document.write(num + " ");
 
 			}
 			num++;
@@ -47,9 +52,7 @@
 
 		//C
 
-		document.write("C <br>")
-		var cont = 0; var temp; var contDig;
-		var num = 1;
+		document.write("<br/><br/> C <br/>")
 
 		/*while (cont < 25){
             num++;
@@ -89,7 +92,8 @@
                         Math.floor(temp /= 10);
                         if ( temp % 10 == Math.floor(temp / 100)){
                             Math.floor(temp /= 10);
-                            if( temp % 10 == Math.floor(temp / 10) ){
+                            if( 
+                            temp % 10 == Math.floor(temp / 10) ){
                                 cont++;
                                 document.write(num);
                             }
@@ -101,17 +105,57 @@
 
         }*/
 
-        while ( cont < 25 ){
-        	num++;
+        var cumple; 
+		var num = 10; 
+		var cont = 0; 
+		var temp;
 
-        	temp = toString(num);
+		 while ( cont < 25 ){
+        	
+        	cumple = true;
 
-        	contDig = temp.length;
+        	temp = num.toString();
 
-        	document.write(contDig);
+        	for (var i = 0; i < temp.length - 1 ; i++){
+        		if( temp.charAt(i) != temp.charAt(i+1) ){
+        			cumple = false;
+        			break;
+        		}
+        	}
 
-        	cont++;
+    		if ( cumple ){
+    			document.write(num + " ");
+    			cont++;
+    		}
+
+    		num++;
         }
+
+
+        //D
+        document.write("<br/><br/>D" + "<br/>");
+
+        var num = 0;
+
+        while (num <= 70){
+
+        	if ( num % 7 == 0 ){
+        		document.write(num + " ");
+        	}
+
+        	num++;
+        }
+
+
+        //E
+        document.write("<br/><br/>E" + "<br/>");
+
+        students = new Array(10);
+
+        for (var i = 0; i <= 10; i++) {
+        	students[i] = prompt("Introduzca la nota del alumno " + i+1);
+        }
+
 
 	</script>
 		
