@@ -150,15 +150,71 @@
         //E
         document.write("<br/><br/>E" + "<br/>");
 
-        students = new Array(10);
+        var students = []; var suspesos = 0;
 
-        for (var i = 0; i <= 10; i++) {
-        	students[i] = prompt("Introduzca la nota del alumno " + i+1);
+        for (var i = 0; i < 10; i++) {
+        	students[i] = prompt("Introduzca la nota del alumno " + parseInt(parseInt(i)+1));
         }
 
+        for (x in students){
+        	if (students[x] < 5){
+        		suspesos++;
+        	}
+
+        } 
+
+        var resultat = Math.abs(suspesos - students.length);
+
+        document.write(resultat + " aprobados y " + suspesos + " suspendidos" );
+
+
+        //F
+        document.write("<br/><br/>F" + "<br/>");
+
+        var media = 0; var pesos = [];
+
+        for (var i = 0; i < 5; i++) {
+
+        	pesos[i] = parseInt(prompt("Peso de la persona " + parseInt(parseInt(i)+1)));
+
+    	}
+
+    	for (var i = 0; i < pesos.length; i++){
+    		media += pesos[i];
+    	}
+
+    	media /= pesos.length;
+
+    	document.write("El peso medio de las personas es " + media);
+
+
+    	//G
+    	document.write("<br/><br/>G" + "<br/>");
+
+    	var salarios = []; var pobres = 0; var ricos = 0; var suma = 0;
+
+    	for (var i = 0; i < 5; i++) {
+        	salarios[i] = parseInt(prompt("Introduzca el salario del trabajador " + parseInt(parseInt(i)+1)));
+        }
+
+        for (x in salarios){
+        	if ( salarios[x] < 1000 ){
+        		pobres++;
+        	}else{
+        		ricos++;
+        	}
+        	suma += salarios[x];
+        }
+
+        document.write("El salario total de los trabajadores es " + suma + ". De los cuales, " + ricos + " son ricos y " + pobres + " son pobres.")
+
+
+        //H
+        document.write("<br/><br/>G" + "<br/>");
+
+        
 
 	</script>
-		
 		
 </body>
 </html>

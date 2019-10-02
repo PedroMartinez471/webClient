@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<button onclick="suma()">PULSA</button>
+
+	<script>
+
+		var num = 0; var sum = 0;
+
+		function suma(){
+
+			do{
+
+				num = parseInt(prompt("Introduzca el número a sumar "));
+				sum += num;
+
+				if (num > 0){
+					document.write(num + " POSITIVO <br/>");
+				}else if(num < 0){
+					document.write(num + " NEGATIVO <br/>");
+				}else if(num == 0){
+					document.write(num + " CERO <br/>");
+				}else{
+					document.write("SALIDA");
+				}
+
+			}while(num != 9999);
+
+		}
+
+	</script>
+		
+</body>
+</html>
