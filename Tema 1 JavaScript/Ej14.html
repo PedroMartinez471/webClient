@@ -2,14 +2,13 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
 
 	<script>
-
-		function addtion(){
-			var value1;
-			var value2;
+		class adition(){
+			constructor(){
+				this.value1;
+				this.value2;
+			}
 
 			function loadValue1(valor){
 				this.value1 = valor;
@@ -20,11 +19,33 @@
 			}
 
 			function result(){
-				return value1 + value2;
+				document.getElementById("resultado").innerHTML = value1 + value2;
 			}
 		}
 
+		
 
+	</script>
+</head>
+<body>
+
+	<form action="#">
+		Número 1:
+		<input type="number" value="Número 1"></input>
+		<input onclick="adition.loadValue1()" type="button" value="Añade">
+		<br/>
+		Número 2:
+		<input type="number" value="Número 2"></input>
+		<input onclick="loadValue2()" type="button" value="Añade">
+		<br/>
+		<input onclick="result()" type="button" value="EjercicioA: Suma"></input>
+
+	</form>
+
+	<p id="resultado"></p>
+
+
+	<script>
 
 
 	</script>
