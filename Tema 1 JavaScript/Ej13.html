@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<input onclick="ejercicioA();" type="button" value="Ejercicio A: Devolver número menor"</input>
+
+	<input onclick="ejercicioB();" type="button" value="Ejercicio B: Array ascendente"</input>
+
+	<input onclick="ejercicioC();" type="button" value="Ejercicio C: Perímetro cuadrado"</input>
+
+	<input onclick="ejercicioD();" type="button" value="Ejercicio D: Contador de dígitos"</input>
+
+	<input onclick="ejercicioE();" type="button" value="Ejercicio E: Media de 3 números"</input>
+
+	<input onclick="ejercicioF();" type="button" value="Ejercicio F: Suma de 5 números"</input>
+
+	<script>
+
+		//A
+		var a, b, c;
+
+
+
+		function menor(a, b, c){
+
+			menor = a;
+
+			if ( a > b ){
+				menor = b;
+			}
+
+			if ( b > c ){
+				menor = c;
+			}
+
+			return menor;
+		}
+
+		function ejercicioA(){
+
+			a = prompt("Introduzca el 1º número: ");
+			b = prompt("Introduzca el 2º número: ");
+			c = prompt("Introduzca el 3º número: ");
+
+			document.write(menor(a, b, c));
+
+		}
+
+
+		//B
+
+		var numeros = [];
+
+		function pideNumero(){
+			var num = parseInt(prompt("Introduzca un número: "));
+			return num;
+		}
+
+		function ejercicioB(){
+
+			numeros[0] = pideNumero();
+			numeros[1] = pideNumero();
+			numeros[2] = pideNumero();
+
+			numeros.sort( comparar );
+
+			for (x in numeros){
+				document.write(numeros[x] + "<br/>");
+			}
+		
+		}
+
+		function comparar( a, b ){
+			return a - b;
+		}
+
+
+		//C
+
+		function ejercicioC(){
+			var square = pideNumero();
+
+			document.write("El perímetro de un cuadrado con los costados de " + square + "m mide " + square * 4 + "m.");
+		}
+
+
+		//D
+		function ejercicioD(){
+			var num = prompt("Introduzca número: ");
+
+			document.write("El número de dígitos de " + num + " es " + num.length);
+		}
+
+
+		//E
+		function ejercicioE(){
+			var num1 = pideNumero();
+			var num2 = pideNumero();
+			var num3 = pideNumero();
+
+			document.write("La media de los números es " + (num1+num2+num3)/3);
+		}
+
+
+		//F
+		var sum = 0;
+
+		function ejercicioF(){
+			for ( var i = 0 ; i < 5 ; i++){
+				var a = pideNumero();
+				sum += a;
+			}
+
+			document.write(sum);
+		}
+
+
+	</script>
+		
+</body>
+</html>

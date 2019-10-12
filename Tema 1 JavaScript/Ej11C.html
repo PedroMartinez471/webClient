@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		//C
+		var cantidad; var numCuenta; var nombre; var sumaDinero = 0;
+		array = new Array[]; var i = 0;
+
+		function cuenta(numCuenta, nombre, cantidad){
+			this.numCuenta = numCuenta;
+			this.nombre = nombre;
+			this.cantidad = cantidad;
+		}
+
+		do{
+		
+			numCuenta = parseInt(prompt("Número de cuenta:"));
+			nombre = prompt("Nombre");
+			cantidad = parseInt(prompt("Dinero disponible"));
+
+			array[i] = new cuenta (numCuenta, nombre, cantidad); 
+
+			sumaDinero	+= cantidad;
+
+			i++;
+
+		}while(numCuenta != 0);
+
+		document.write(sumaDinero + " es el dinero total entre todas las cuentas del banco");
+
+	</script>
+
+</body>
+</html>

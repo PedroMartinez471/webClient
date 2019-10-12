@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		//B
+		var people = 0; var men = 0; var women = 0; var workers = 0; var oldest = ""; var yougest = 0;
+
+		do{
+			var id = parseInt(prompt("ID:"));
+			var age = parseInt(prompt("Edad:"));
+			var sex = prompt("Sexo del sujeto (H / M)");
+
+			
+			people++;
+
+			if ( oldest == 0 ){
+				yougest = age;
+			}
+
+			if ( age > oldest ){
+				oldest = age;
+			}
+
+			if ( sex == "H" || sex == "h" ){
+				men++;
+			}else{
+				women++;
+			}
+
+			if( age > 17 && age < 66 ){
+				workers++;
+			}
+
+		}while(id != 0);
+
+		document.write("Has introducido " + people + " personas.<br/>");
+		document.write("De los cuales " + men + " son hombres y " + women + " son mujeres. <br/>");
+		document.write(workers + " están en edad laboral. <br/>");
+		document.write("La personas más mayor tiene " + oldest + " años y el más joven " + yougest);
+
+	</script>
+
+</body>
+</html>

@@ -6,7 +6,40 @@
 <body>
 
 	<script>
-		
+
+		var array = [];
+		var i = 0;
+
+		function person(id, age, sex) {
+			this.id = id;
+			this.age = age;
+			this.sex = sex;
+		}
+
+		do{
+			var id = parseInt(prompt("DNI de la persona"));
+			var age = parseInt(prompt("Edad"));
+			var sex = prompt("Sexo (H / M)");
+
+			if ( id != 0 ){
+				array[i] = new person(id, age, sex);
+			}
+
+			i++;
+
+			document.write(array.lenght);
+
+
+		}while(id != 0);
+
+		for (var x = 0; x < array.lenght; x++) {
+
+
+			console.log(x);
+			document.write("DNI: " + array[x].id);
+			document.write("Edad: " + array[x].age);
+			document.write("Sexo " + array[x].sex);
+		}
 
 	</script>
 		
