@@ -1,3 +1,7 @@
+<!--fecha formato correcto, hora también, duración entre 1 24h, puntos de 1 a 5.
+
+//Poder buscar un día concreto, ordenar servicios asc y desc, cuantos servicios duran X tiempo-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,12 +26,21 @@
 		function creaServei(){
 			var tr = document.getElementById("trabajo").value;
 			var per = document.getElementById("persona").value;
-			var fec = new Date("fechaFor");
+			var fec = myStringToDate("fechaFor");
 			var h = document.getElementById("hora").value;
 			var dur = document.getElementById("duracion").value;
 			var val = document.getElementById("valor").value;
 
-			var ser = new Servei(tr, per, fec, h, dur, val);
+			console.log(fec.getFullYear());
+
+			if (tr == "" || per == "" || h == "" || dur == "" || val > 1.5 || val < 0.8 ){
+
+				document.getElementById("respuestaIncorrecta").innerHTML = "Servicio NO generado"
+
+			}else{
+
+				var ser = new Servei(tr, per, fec, h, dur, val);
+			}
 
 			return ser;
 		}
@@ -36,12 +49,14 @@
 			var s = creaServei();
 			lista.unshift(s);
 			imprimeLista();
+			document.getElementById("respuestaCorrecta").innerHTML = "Servicio creado correctamente"
 		}
 
 		function addServeiFin(){
 			var s = creaServei();
 			lista.push(s);
 			imprimeLista();
+			document.getElementById("respuestaCorrecta").innerHTML = "Servicio creado correctamente"
 		}
 
 		function ordenDesc(){
@@ -52,6 +67,53 @@
 		function ordenAsc(){
 			lista.sort(function(a,b){ return (a.valor<b.valor)?1:-1;});
 			imprimeLista();
+		}
+
+		function imprimeDuracion(){
+			var txt = "";
+			var d = document.getElementById("dur").value;
+
+			for (var i = 0; i < lista.length; i++){
+				if ( lista[i].duracion == d ){
+					txt += "<li><strong>" + lista[i].trabajo + "</strong>, " + lista[i].persona + ", " + lista[i].getFecha() + ", <strong>" + lista[i].getHora() + "</strong>, DURACIÓN: <strong>" + lista[i].duracion + "</strong>, VALOR: <strong>" + lista[i].valor + "</strong></li>";
+				}
+			}
+
+			var x = document.getElementById("servicios");
+			x.innerHTML = txt;
+		}
+
+		function imprimeFecha(){
+			var txt = "";
+			var d = myStringToDate(document.getElementById("dateLookfor").value);
+
+			for (var i = 0; i < lista.length; i++){
+				var comprobante = true;
+
+				if ( lista[i].fecha < d ){
+					comprobante = false;
+				}else if ( lista[i].fecha > d){
+					comprobante = false;
+				}
+
+				console.log(d);
+
+				if ( comprobante ){
+					txt += "<li><strong>" + lista[i].trabajo + "</strong>, " + lista[i].persona + ", " + lista[i].getFecha() + ", <strong>" + lista[i].getHora() + "</strong>, DURACIÓN: <strong>" + lista[i].duracion + "</strong>, VALOR: <strong>" + lista[i].valor + "</strong></li>";
+				}
+			}
+
+			var x = document.getElementById("servicios");
+			x.innerHTML = txt;
+		}
+
+		function myStringToDate(str) {
+		  	var arr  = str.split("/"); // split string at slashes to make an array
+		  	var yyyy = arr[2] - 0; // subtraction converts a string to a number
+		  	var jsmm = arr[1] - 1; // subtract 1 because stupid JavaScript month numbering
+		  	var dd   = arr[0] - 0; // subtraction converts a string to a number 
+
+		 	return new Date(yyyy, jsmm, dd); // this gets you your date
 		}
 
 	</script>
@@ -91,7 +153,7 @@
 					</div>
 					<div class="col">
 						<label for="item">Valor hora: </label>
-						<input  class="form-control" type="text" id="valor" />
+						<input  class="form-control" type="number" id="valor" max="3" />
 					</div>
 				</div>
 				<input type="button" onclick="addServeiIn()" value="Añadir al principio">
@@ -100,6 +162,17 @@
 			<hr/>
 			<button type="button" onclick="ordenAsc()">Ordenar por horas más valiosas</button>
 			<button type="button" onclick="ordenDesc()">Ordenar por horas más baratas</button>
+			<form class="durac.">
+				<button type="button" onclick="imprimeDuracion()">Buscar por duración</button>
+				<input type="text" id="dur" maxlength="3"/>
+			</form>
+			<form class="fecha.">
+				<button type="button" onclick="imprimeFecha()">Buscar por fecha</button>
+				<input type="Date" id="dateLookfor"/>
+			</form>
+
+			<p style="background-color: green; color: white;" id="respuestaCorrecta"></p>
+			<p style="background-color: red; color: white;" id="respuestaIncorrecta"></p>
 		</div>
 		</div>
 	</div>
