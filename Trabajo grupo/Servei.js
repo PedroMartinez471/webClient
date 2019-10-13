@@ -22,5 +22,24 @@ class Servei {
 		return this.persona + " / " + this.hora + " / " + this.duracion + " / " +
 		this.valor;
 	}
+
+	getHora(){
+		var horaBien;
+		if (this.hora.length == 4){
+			horaBien = this.hora.substring(0,2) + ":" + this.hora.substring(2,4) + "h";
+		}else{
+			horaBien = this.hora.substring(0,1) + ":" + this.hora.substring(1,3) + "h";
+		}
+
+		return horaBien;
+	}
+
+	getFecha(){
+		var day = this.fecha.getDate();
+		var month = this.fecha.getMonth() + 1;
+		var year = this.fecha.getFullYear();
+
+		return day + "/" + month + "/" + year;
+	}
 	
 }

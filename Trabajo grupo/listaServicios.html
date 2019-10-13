@@ -3,27 +3,115 @@
 <head>
 	<title>Lista de Servicios</title>
 
-	<script src="Servei.js"></script>
+	<script type="text/javascript" src="Servei.js"></script>
+	<meta charset="UTF-8">
 
 	<script>
 		
 		function imprimeLista(){
-			var texto;
+			var texto = "";
 
 			for (var i = 0; i < lista.length; i++){
-				document.write(lista[0]REVISAR)
+				texto += "<li><strong>" + lista[i].trabajo + "</strong>, " + lista[i].persona + ", " + lista[i].getFecha() + ", <strong>" + lista[i].getHora() + "</strong>, DURACIÓN: <strong>" + lista[i].duracion + "</strong>, VALOR: <strong>" + lista[i].valor + "</strong></li>";
 			}
+
+			var x = document.getElementById("servicios");
+			x.innerHTML = texto;
+		}
+
+		function creaServei(){
+			var tr = document.getElementById("trabajo").value;
+			var per = document.getElementById("persona").value;
+			var fec = new Date("fechaFor");
+			var h = document.getElementById("hora").value;
+			var dur = document.getElementById("duracion").value;
+			var val = document.getElementById("valor").value;
+
+			var ser = new Servei(tr, per, fec, h, dur, val);
+
+			return ser;
+		}
+
+		function addServeiIn(){
+			var s = creaServei();
+			lista.unshift(s);
+			imprimeLista();
+		}
+
+		function addServeiFin(){
+			var s = creaServei();
+			lista.push(s);
+			imprimeLista();
+		}
+
+		function ordenDesc(){
+			lista.sort(function(a,b){ return (a.valor>b.valor)?1:-1;});
+			imprimeLista();
+		}
+
+		function ordenAsc(){
+			lista.sort(function(a,b){ return (a.valor<b.valor)?1:-1;});
+			imprimeLista();
 		}
 
 	</script>
 </head>
 <body>
+	<div>
+		<div>
+		 	<h2>Lista de servicios</h2>
+		 	<div>
+		 		<h5><p class="numeroSer"></p> Servicios</h5>
+				<ul id="servicios">
+				</ul>
+			</div>
+		 <hr/>
+		 <div>
+		 	<form class="formulario">
+		 		<div class="form-row">
+    				<div class="col">
+						<label for="item">Trabajo: </label>
+						<input  class="form-control" type="text" id="trabajo" />
+					</div>
+					<div class="col">
+						<label for="item">Nombre: </label>
+						<input  class="form-control" type="text" id="persona" />
+					</div>
+					<div class="col">
+						<label for="item">Fecha: </label>
+						<input  class="form-control" type="Date" id="fechaFor" />
+					</div>
+					<div class="col">
+						<label for="item">Hora de inicio: </label>
+						<input  class="form-control" type="text" id="hora" />
+					</div>
+					<div class="col">
+						<label for="item">Duracion: </label>
+						<input  class="form-control" type="text" id="duracion" />
+					</div>
+					<div class="col">
+						<label for="item">Valor hora: </label>
+						<input  class="form-control" type="text" id="valor" />
+					</div>
+				</div>
+				<input type="button" onclick="addServeiIn()" value="Añadir al principio">
+				<input type="button" onclick="addServeiFin()" value="Añadir al final">
+			</form>
+			<hr/>
+			<button type="button" onclick="ordenAsc()">Ordenar por horas más valiosas</button>
+			<button type="button" onclick="ordenDesc()">Ordenar por horas más baratas</button>
+		</div>
+		</div>
+	</div>
+	<hr/>
 
 	<script>
 		
 		var lista = [];
-		lista[0] = new Servei("Inglés", "Pepe", new Date("2019-10-12"), 1230, 2, 1);
-		lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), 1100, 2, 1);
+		lista[0] = new Servei("Inglés", "Pepe", new Date("2019-10-12"), "1230", 2, 1);
+		lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), "1100", 2, 1);
+		lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2.5, 1.2);
+		lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 0.8);
 		imprimeLista();
 
 
