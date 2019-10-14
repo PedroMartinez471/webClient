@@ -26,12 +26,12 @@
 		function creaServei(){
 			var tr = document.getElementById("trabajo").value;
 			var per = document.getElementById("persona").value;
-			var fec = myStringToDate("fechaFor");
+			var fec = document.getElementById("fechaFor").value;
 			var h = document.getElementById("hora").value;
 			var dur = document.getElementById("duracion").value;
 			var val = document.getElementById("valor").value;
 
-			console.log(fec.getFullYear());
+			var nFec = myStringToDate(fec);
 
 			if (tr == "" || per == "" || h == "" || dur == "" || val > 1.5 || val < 0.8 ){
 
@@ -39,7 +39,7 @@
 
 			}else{
 
-				var ser = new Servei(tr, per, fec, h, dur, val);
+				var ser = new Servei(tr, per, nFec, h, dur, val);
 			}
 
 			return ser;
@@ -108,12 +108,13 @@
 		}
 
 		function myStringToDate(str) {
-		  	var arr  = str.split("/"); // split string at slashes to make an array
-		  	var yyyy = arr[2] - 0; // subtraction converts a string to a number
-		  	var jsmm = arr[1] - 1; // subtract 1 because stupid JavaScript month numbering
-		  	var dd   = arr[0] - 0; // subtraction converts a string to a number 
+			console.log(str);
+		  	var arr  = str.split("-"); // Separamos la fecha por la barra para convertir en string
+		  	var yyyy = parseInt(arr[0]) - 0; 
+		  	var jsmm = parseInt(arr[1]) - 1; 
+		  	var dd   = parseInt(arr[2]) - 0; 
 
-		 	return new Date(yyyy, jsmm, dd); // this gets you your date
+		 	return new Date(yyyy, jsmm, dd); 
 		}
 
 	</script>
@@ -141,7 +142,7 @@
 					</div>
 					<div class="col">
 						<label for="item">Fecha: </label>
-						<input  class="form-control" type="Date" id="fechaFor" />
+						<input  class="form-control" type="date" id="fechaFor" />
 					</div>
 					<div class="col">
 						<label for="item">Hora de inicio: </label>
