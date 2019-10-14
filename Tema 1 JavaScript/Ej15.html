@@ -1,0 +1,39 @@
+<!--Write a script that allow us to ...
+
+a) Show the recent term (1st, 2nd, 3rd or 4th).-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script>
+
+		function showToday() {
+
+			var today;
+
+			today = new Date();
+
+			if ( today.getMonth() < 3 ){
+				document.write("Estamos en el primer trimestre");
+			}else if( today.getMonth() < 6){
+				document.write("Estamos en el segundo trimestre");
+			}else if ( today.getMonth() < 9 ){
+				document.write("Estamos en el tercer trimestre");
+			}else{
+				document.write("Estamos en el cuarto trimestre");
+			}
+
+			}
+
+			showToday();
+		
+		
+
+	</script>
+</head>
+<body>
+		
+</body>
+</html>

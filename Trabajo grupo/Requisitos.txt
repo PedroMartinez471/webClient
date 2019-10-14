@@ -1,0 +1,11 @@
+Ejercicio grupo:
+
+	Servicio (quién lo hace, fecha concreta, hora concreta, duración [horas], valor monetario)
+
+fecha formato correcto, hora también
+duración entre 1 y 24h
+puntos de 1 a 5
+
+Poder buscar todos los servicios un día concreto
+Ordenar servicios por puntos (asc y desc)
+Cuantos seriviocs han durado X horas
