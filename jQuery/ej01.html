@@ -1,0 +1,23 @@
+<!-- a) Create a web page with 2 paragraphs (<p>). And write a script using jQuery to catch the click event on the 2nd paragraph. When you click on the 2nd paragraph an alert message "You pressed on 2nd Paragraph" must appear.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../../../jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<p id="p1">Párrafo No celoso</p>
+	<p id="p2">Párrafo celoso</p>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#p2").click(function(){
+				alert("No me clickes");
+			});
+		});
+
+	</script>
+
+</body>
+</html>
