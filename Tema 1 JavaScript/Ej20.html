@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		function muestra(){
+			let n = document.getElementById("numero").value;
+
+			alert(n+" elevado al cuadrado es " + Math.pow(n, 2));
+		}
+
+		function compara(){
+			let n1 = document.getElementById("n1").value;
+			let n2 = document.getElementById("n2").value;
+
+			if ( n1 < n2 ){
+				alert(n2+" es el número más grande");
+			}else if( n1 > n2 ){
+				alert(n1+" es el número más grande");
+			}else{
+				alert("Son iguales");
+			}
+		}
+
+		function muestraNombre(){
+			let name = document.getElementById("nombre").value;
+			let surname = document.getElementById("apellido").value;
+
+			alert("Su nombre completo es " +name+ " " + surname);
+		}
+
+	</script>
+
+	<form>
+		A) Introduzca un número para elevarlo al cuadrado: <input type="text" id="numero">
+		<input type="button" name="f" value="Elevar" onclick="muestra()"></input>
+	</form>
+	<form>
+		<br/>
+		B) Introduzca dos números para saber cual es más grande:<br/>
+		Número 1: <input type="number" name="" id="n1"><br/>
+		Número 2: <input type="number" name="" id="n2"><br/>
+		<input type="button" value="Comparar" onclick="compara()">
+
+	</form>
+	<form>
+		<br/>
+		C) Nombre: <input type="text" id="nombre"><br/>
+		Apellido: <input type="text" name="" id="apellido"><br/>
+		<input type="button" name="f" value="Imprimir" onclick="muestraNombre()"></input>
+	</form>
+
+</body>
+</html>

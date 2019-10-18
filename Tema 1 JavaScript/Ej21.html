@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		function compara(){
+			let n = document.getElementById("pass").value;
+			let m = document.getElementById("repe").value;
+
+			if ( n === m){
+				alert("Contraseña registrada");
+			}else{
+				alert("La contraseña no coincide");
+			}
+		}
+
+	</script>
+	<form>
+		Introduzca una contraseña: <input type="password" id="pass"><br/>
+		Repita la contraseña: <input type="password" id="repe"><br/>
+		<input type="button" name="f" value="Confirmar" onclick="compara()"></input>
+	</form>
+
+</body>
+</html>

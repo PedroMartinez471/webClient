@@ -43,3 +43,9 @@ class Servei {
 	}
 	
 }
+
+div por cada servicio diferente, dentro de este, tendremos <p> con id, será el nombre de la persona,
+la classe será el valor de las horas (las clases no pueden empezar por número, poner v1, v2...) 
+la duración la ponemos dentro de un bold
+
+Buscar por id, por clase, por tag (etiqueta( div, p)

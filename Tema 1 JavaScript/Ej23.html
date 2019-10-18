@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		function muestraDeporte(){
+			let deporte = document.getElementById("dep").value;
+			
+			alert(deporte + " elegido");
+		}
+	</script>
+
+	<form>
+		<input type="radio" value="tenis" id="tenis"> Tenis
+		<br>
+		<input type="radio" value="futbol" id="futbol"> Fútbol
+		<br>
+		<input type="radio" value="karate" id="karate"> Karate
+		<br>
+		<input type="button" onclick="muestraDeporte()" value="Enviar">
+	</form>
+
+	
+
+</body>
+</html>

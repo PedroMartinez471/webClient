@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		let array = [];
+
+		for (var i = 0; i < 8 ; i++){
+			array[i] = parseInt(prompt("Número " + parseInt((i)+1)));
+		}
+
+		let sum = 0;
+		let cont = 0;
+		let sumHighers = 0;
+		let average = 0;
+
+		for (var n of array ){
+			sum += n;
+			
+			if ( n > 5 ){
+				sumHighers += n;
+				cont++;
+			}
+		}
+
+		average = (sum / array.length);
+
+
+		document.write(`La suma de los números es ${sum}<br/>
+			la media de estos números es ${average}<br/>
+			Hay ${cont} números mayores de 5, los cuales suman ${sumHighers}
+			`)
+
+	</script>
+</body>
+</html>

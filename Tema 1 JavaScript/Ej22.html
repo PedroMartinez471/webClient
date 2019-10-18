@@ -1,0 +1,172 @@
+<!--Write a script/web that allow us to ...
+
+a) Select from different kinf of pizzas (Pepperoni 6€, Quatro Formaggi 5€, Procciuto 4€,...) using a SELECT element and when one option is selected write its price inside a TEXT element.
+
+b) Generate a cost estimation for a computer using 3 different SELECT elements which allow us to select :
+
+
+Processor (Intel I3 - $400, Intel I5 $600, Intel I7 $800).
+Monitor (Samsung 20' - $250, Samsung 22' - $350, Samsung 26' - $550)
+Hard Disk (500 Gb - $300, 1 Tb - $440, 3 Tb - $500)
+
+When we press the button Calculate the final cost is shown in a TEXT element.
+
+
+c) Select from different kinf of pizzas (Pepperoni 6€, Quatro Formaggi 5€, Procciuto 4€,...) using a SELECT element and enter how many pizzas we want in a TEXT element.
+When we press the button Calculate the final cost is shown in another TEXT element.
+
+d) Generate an exam with 4 questions. Every question has 4 possible options and only one of them is right. Use a SELECT element for each question. There must be a button to calculate the final mark of the exam and show an alert message with the final mark.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		function imprimePrecio(){
+			let n = document.getElementById("pizzaSelected");
+			document.getElementById("precio").value = n.options[n.selectedIndex].value + "€";
+		}
+
+		function calcularPRecio(){
+			let pro = document.getElementById("procesador");
+			let mon = document.getElementById("monitor");
+			let disc = document.getElementById("discoDuro");
+
+			let proP = pro.options[pro.selectedIndex].value;
+			let monP = mon.options[mon.selectedIndex].value;
+			let discP = disc.options[disc.selectedIndex].value;
+
+			let total = parseInt(proP)+parseInt(monP)+parseInt(discP);
+
+			document.getElementById("precioPC").value = total+"€";
+		}
+
+		function imprimePrecios(){
+			let n = document.getElementById("pizzaSelected2");
+			let can = document.getElementById("cantidad").value;
+
+			document.getElementById("precioMulti").value = n.options[n.selectedIndex].value * can + "€";
+		}
+
+		function calculaNota(){
+			let respuestas = [];
+			let n = [];
+			let puntos = 0;
+
+
+
+			respuestas[0] = document.getElementById("p1");
+			respuestas[1] = document.getElementById("p2");
+			respuestas[2] = document.getElementById("p3");
+			respuestas[3] = document.getElementById("p4");
+
+			n[0] = respuestas[0].options[respuestas[0].selectedIndex].value;
+			n[1] = respuestas[1].options[respuestas[1].selectedIndex].value;
+			n[2] = respuestas[2].options[respuestas[2].selectedIndex].value;
+			n[3] = respuestas[3].options[respuestas[3].selectedIndex].value;
+
+
+			for ( r of n ){
+				if ( r == "true"){
+					puntos++;
+				}
+			}
+
+			document.getElementById("notaFinal").value = puntos*2.5;
+		}
+
+	</script>
+	<form>
+		<strong>A)</strong> Elige tu pizza: <select id="pizzaSelected" onchange="imprimePrecio()">
+		<option value="6">Pepperoni</option>
+		<option value="5">Quatro Formaggi</option>
+		<option value="4">Prosciuto</option></select>
+
+		<br/>
+		PRecio de la pizza:<input type="text" id="precio"><br>
+	</form>
+
+	<form>
+		<br>
+		<strong>B)</strong> Monta tu pc gaming:<br>
+		Procesador:<select id="procesador">
+						<option value="400">Intel i3</option>
+						<option value="600">Intel i5</option>
+						<option value="800">Intel i7</option>
+					</select>
+		<br>
+		Monitor:<select id="monitor">
+					<option value="250">Samsung 20'</option>
+					<option value="350">Samsung 22'</option>
+					<option value="550">Samsung 26'</option>
+				</select>
+		<br>
+		Disco duro:<select id="discoDuro">
+						<option value="300">500 Gb</option>
+						<option value="440">1 Tb</option>
+						<option value="500">3 Tb</option>
+					</select>
+
+		<br>
+		<input type="button" value="Calcular precio" onclick="calcularPRecio()">
+
+		<br>
+		Precio final:<input type="text" id="precioPC">
+	</form>
+
+	<form>
+		<br>
+		<strong>C)</strong> Elige tu pizza: <select id="pizzaSelected2">
+		<option value="6">Pepperoni</option>
+		<option value="5">Quatro Formaggi</option>
+		<option value="4">Prosciuto</option></select>
+
+		Cantidad de pizzas: <input type="text" id="cantidad">
+
+		<br>
+		<input type="button" value="Calcular" onClick="imprimePrecios()">
+
+		<br/>
+		Precio de las pizzas:<input type="text" id="precioMulti"><br>
+	</form>
+
+	<form>
+		<br>
+		<strong>D)</strong> Pregunta 1: ¿Es esto un cuestionario real?<select id="p1">
+		<option value="false">Sí</option>
+		<option value="true">No</option>
+		<option value="false">Quizás</option></select>
+		<br>
+		Pregunta 2: ¿Es el creador de este test un ser de luz y de colores?<select id="p2">
+			<option value="true">Por supuesto</option>
+			<option value="false">Para nada</option>
+			<option value="false">Es tonto</option>
+		</select>
+		<br>
+		Pregunta 3: ¿Aprovará esta asignatura?
+		<select id="p3">
+			<option value="true">Como osas cuestionarlo</option>
+			<option value="false">Que va, repetirá curso</option>
+			<option value="false">Ni se presentará a los examenes</option>
+		</select>
+		<br>
+		Pregunta 4: ¿Este test está bien hecho?
+		<select id="p4">
+			<option value="false">Sí, si lo ha hecho un mono</option>
+			<option value="false">No sé ni como se rellena</option>
+			<option value="true">Es precioso, lo mejor que han visto mis ojos</option>
+		</select>
+
+
+		<br>
+		<input type="button" value="Calificar" onClick="calculaNota()">
+
+		<br/>
+		Nota final:<input type="text" id="notaFinal"><br>
+	</form>
+
+</body>
+</html>
