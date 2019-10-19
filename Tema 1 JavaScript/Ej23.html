@@ -8,18 +8,22 @@
 	<script type="text/javascript">
 		
 		function muestraDeporte(){
-			let deporte = document.getElementById("dep").value;
-			
-			alert(deporte + " elegido");
+			if(document.getElementById("tenis").checked){
+				alert("Tenis elegido");
+			} else if (document.getElementById("futbol").checked){
+				alert("Fúbtol elegido");
+			} else if (document.getElementById("karate").checked){
+				alert("Karate elegido");
+			}
 		}
 	</script>
 
 	<form>
-		<input type="radio" value="tenis" id="tenis"> Tenis
+		<input type="radio" name="dep" id="tenis"> Tenis
 		<br>
-		<input type="radio" value="futbol" id="futbol"> Fútbol
+		<input type="radio" name="dep" id="futbol"> Fútbol
 		<br>
-		<input type="radio" value="karate" id="karate"> Karate
+		<input type="radio" name="dep" id="karate"> Karate
 		<br>
 		<input type="button" onclick="muestraDeporte()" value="Enviar">
 	</form>

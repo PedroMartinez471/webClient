@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Horari</title>
+	<style>
+		table, th, td, h2 {
+  		text-align: center;
+  		border: solid 2px;
+		}
+	</style>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function destaca(clase, color){
+			clase.bgColor=color;
+		}
+	</script>
+
+  <h2 style="background-color: lightgrey; text-align: center">HORARIO 2018-2019</h2>
+	<table style="width:100%">
+  <tr bgcolor="black" style="color:white">
+    <th>Hora</th>
+    <th>Lunes</th> 
+    <th>Martes</th>
+    <th>Miércoles</th>
+    <th>Jueves</th> 
+    <th>Viernes</th>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">8:00 - 8:55</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">PROGRAMACIÓN</td> 
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="3">SISTEMAS</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">ENTORNOS</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="3">BBDD</td> 
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">PROGRAMACIÓN</td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">8:55 - 9:50</td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">9:50 - 10:45</td> 
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >BBDD</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >PROGRAMACIÓN</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >SISTEMAS</td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">10:45 - 11:15</td>
+    <td bgcolor="red" colspan="5">  P    A    T    I    O  </td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">11:15 - 12:10</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">BBDD</td> 
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">BBDD</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">PROGRAMACIÓN</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">LENGUAJE DE MARCAS</td>
+    <td bgcolor="lightgreen">SISTEMAS</td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">12:10 - 13:05</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" rowspan="2">LENGUAJE DE MARCAS</td>
+  </tr>
+  <tr>
+    <td bgcolor="blue" style="color:white">13:05 - 14:00</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >ENTORNOS</td> 
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >FOL</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >FOL</td>
+    <td bgcolor="lightgreen" onMouseOver="destaca(this, 'green')" onMouseOut="destaca(this, 'lightgreen')" >FOL</td>
+  </tr>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		function muestraMensaje(){
+			if(document.getElementById("menor").checked){
+				alert("No puedes acceder al sitio online");
+			} else if (document.getElementById("mayor").checked){
+				alert("Adelante");
+			} 
+		}
+	</script>
+
+	<form>
+		<input type="radio" name="age" id="menor"> Soy menor de 18 años
+		<br>
+		<input type="radio" name="dep" id="mayor"> Mayor de 18 años
+		<br>
+		<input type="button" onclick="muestraMensaje()" value="Enviar">
+	</form>
+
+	
+
+</body>
+</html>

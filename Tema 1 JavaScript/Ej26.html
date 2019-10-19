@@ -1,0 +1,36 @@
+<!--Write a script that allow us to ...
+
+a) Enter a username and password and then show an alert message if the password is shorter than 7 characters or longer than 20 characters.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		function check(){
+			if ( document.getElementById("name").value == ""){
+				alert("Introduzca un nombre, por favor.");
+			} else if (document.getElementById("pass").value.length < 7 || document.getElementById("pass").value.length > 20 ){
+				alert("La contraseña debe tener entre 7 y 20 carácteres.")
+			} else {
+				alert("Todo correcto");
+			}
+		}
+	</script>
+
+	<form>
+		Nombre:<input type="text" name="name" id="name">
+		<br>
+		password:<input type="password" name="pass" id="pass">
+		<br>
+		<input type="button" onclick="check()" value="Enviar">
+	</form>
+
+	
+
+</body>
+</html>
