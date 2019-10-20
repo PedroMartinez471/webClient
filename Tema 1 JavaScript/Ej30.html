@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+
+	<style>
+		body {
+			color: white;
+		}
+	</style>
+
+</head>
+<body bgcolor="black" text-color="white">
+	<script type="text/javascript">
+
+		function numRandom(min, max){
+			let num = Math.floor(Math.random() * (max - min)) + min;
+
+			return num;
+		}
+
+		function abreVentana(){
+			let num = numRandom(0, 3);
+
+			console.log(num);
+
+			switch (num){
+				case 0:
+					window.location='http://www.google.com';
+					break;
+				case 1:
+					window.location='http://www.yahoo.es';
+					break;
+				case 2:
+					window.location='http://www.bing.com';
+					break;
+			}
+		}
+
+		function abreMediaVentana(){
+			let winW = screen.width;
+			let winH = (screen.height / 2);
+
+			console.log(winW, winH, screen.height);
+
+			let win = open("","","status=yes,width='winW', height='winH'");
+
+			win.document.write("<input type='button' value='Cerrar esta ventana' onClick='window.close()'>");
+		}
+
+
+
+	</script>
+
+	<a onclick="abreVentana()">Ejercicio 30.A) Link completamente aleatorio</a>
+	<br><br>
+	<input type="button" id="medidor" value="Ejercicio 30.B)" onClick=abreMediaVentana()>
+
+
+</body>
+</html>

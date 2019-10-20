@@ -5,13 +5,20 @@
 	<title></title>
 
 </head>
-<body onLoad="alerta()">
+<body bgcolor="black">
 	<script type="text/javascript">
-		function alerta(){
-			alert("Se va a cargar la página");
+
+		function abreVentana(){
+			let win = open("","","status=yes,width=600, height=300");
+
+			win.document.write("<input type='button' value='Cerrar esta ventana' onClick='window.close()'>");
 		}
+
+
+
 	</script>
-	<input type="" name="">
+
+	<input type="button" value="Nueva ventana" onclick="abreVentana()">
 
 
 </body>
