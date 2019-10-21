@@ -7,7 +7,11 @@ Buscar entre dos fechas
 revisar horas para hacer parseInt y orden bien por la valoración de horas-->
 
 
-<!-- Un div, id
+<!-- */div por cada servicio diferente, dentro de este, tendremos <p> con id, será el nombre de la persona,
+la classe será el valor de las horas (las clases no pueden empezar por número, poner v1, v2...) 
+la duración la ponemos dentro de un bold
+
+Buscar por id, por clase, por tag (etiqueta( div, p)*/
 
 	-->
 
@@ -25,7 +29,7 @@ revisar horas para hacer parseInt y orden bien por la valoración de horas-->
 			var texto = "";
 
 			for (var i = 0; i < lista.length; i++){
-				texto += "<li><strong>" + lista[i].trabajo + "</strong>, " + lista[i].persona + ", " + lista[i].getFecha() + ", <strong>" + lista[i].getHora() + "</strong>, DURACIÓN: <strong>" + lista[i].duracion + "</strong>, VALOR: <strong>" + lista[i].valor + "</strong></li>";
+				texto += lista[i].getHTML() + "<br>";
 			}
 
 			var x = document.getElementById("servicios");
@@ -195,6 +199,9 @@ revisar horas para hacer parseInt y orden bien por la valoración de horas-->
 		lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), "1100", 2, 1);
 		lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2.5, 1.2);
 		lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 0.8);
+		lista[4] = new Servei("Paseador de perros", "Miguel", new Date("2019-10-19"), "800", 1.5, 0.8);
+		lista[5] = new Servei("Guitarra", "Pedro", new Date("2019-11-01"), "730", 1, 0.8);
+		lista[6] = new Servei("Paseador de perros", "Alberto", new Date("2019-10-16"), "1100", 1, 0.8);
 		imprimeLista();
 
 

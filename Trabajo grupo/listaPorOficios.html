@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="Servei.js"></script>
+
+        <script type="text/javascript">
+            
+            function imprimeLista(){
+                var texto = "";
+
+                for (var i = 0; i < lista.length; i++){
+                    texto += lista[i].getHTML() + "<br>";
+                }
+
+                var x = document.getElementById("servicios");
+                x.innerHTML = texto;
+            }
+
+            function creaDivs(){
+                var oficios = [];
+
+                for ( const o of lista ){
+
+                    if (!oficios.includes(o.trabajo)){
+                        oficios.push(o.trabajo);
+                    }
+                    
+                }
+                
+            }
+
+        </script>
+
+    </head>
+<body>
+    <div>
+        <h5><p class="numeroSer"></p> Servicios</h5>
+        <ul id="servicios">
+        </ul>
+    </div>
+   
+<script>
+
+    var lista = [];
+        lista[0] = new Servei("Inglés", "Pepe", new Date("2019-10-12"), "1230", 2, 1);
+        lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), "1100", 2, 1);
+        lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2.5, 1.2);
+        lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 0.8);
+        lista[4] = new Servei("Paseador de perros", "Miguel", new Date("2019-10-19"), "800", 1.5, 0.8);
+        lista[5] = new Servei("Guitarra", "Pedro", new Date("2019-11-01"), "730", 1, 0.8);
+        lista[6] = new Servei("Paseador de perros", "Alberto", new Date("2019-10-16"), "1100", 1, 0.8);
+    imprimeLista();
+    creaDivs();
+
+    $(document).ready(function(){
+      $("#b1").click(function(){
+        $("div, p, b,h1").css({"background-color":"white"});
+        var vT1 = $("#t1").val();
+        var eSeleccionat = $("#"+vT1);
+        eSeleccionat.css({"background-color":"red"});
+      });
+      $("#b2").click(function(){
+        $("div, p, b, h1").css({"background-color":"white"});
+        var vT2 = $("#t2").val();
+        var eSeleccionat = $("."+vT2);
+        eSeleccionat.css({"background-color":"red"});
+      });
+      $("#b3").click(function(){
+        $("div, p, b, h1").css({"background-color":"white"});
+        var vT3 = $("#t3").val();
+        var eSeleccionat = $(vT3);
+        eSeleccionat.css({"background-color":"red"});
+      });
+    });
+</script>
+</body>
+</html>
