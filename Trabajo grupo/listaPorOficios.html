@@ -7,30 +7,67 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="Servei.js"></script>
+        <meta charset="UTF-8">
+
+        <style type="text/css">	
+
+        	div {
+        		margin: 20px;
+        		background-color: white;
+        	}
+
+        	p:first-child {
+        		padding-top: 20px;
+        	}
+
+        	p {
+
+        		margin-left: 20px;
+        	}
+
+        	.inputs {
+        		margin: 40px 20px;
+        	}
+
+    	</style>
 
         <script type="text/javascript">
+
             
-            function imprimeLista(){
+            function creaLista(){
                 var texto = "";
 
-                for (var i = 0; i < lista.length; i++){
-                    texto += lista[i].getHTML() + "<br>";
+                for (var i = 0; i < oficios.length; i++){
+
+                	for (var j = 0; j < lista.length; j++){
+
+                		if ( lista[j].trabajo == oficios[i]){
+                    		document.getElementById("d"+i).innerHTML += "<p id='"+lista[j].persona+"' class='v"+lista[j].valor+"'>"+lista[j].getHTML() + "</p><br>";	
+                    	}
+
+                	}
+
                 }
 
-                var x = document.getElementById("servicios");
-                x.innerHTML = texto;
+                
             }
 
             function creaDivs(){
-                var oficios = [];
+            	var texto = "";
+            	var i = 0;
 
                 for ( const o of lista ){
 
                     if (!oficios.includes(o.trabajo)){
                         oficios.push(o.trabajo);
+                        texto += "<div id='d"+i+"'></div><br>";
+                        i++;
                     }
                     
                 }
+
+                var x = document.getElementById("servicios");
+                x.innerHTML = texto;
                 
             }
 
@@ -38,43 +75,69 @@
 
     </head>
 <body>
-    <div>
+    <div class="bg-warning">
         <h5><p class="numeroSer"></p> Servicios</h5>
         <ul id="servicios">
         </ul>
+    </div>
+
+    <div class="container-fluid bg-secondary">
+
+		<form>
+			<div class="container-fluid inputs">
+				<input type="text" placeholder="Buscar por ID" id="buscaID">
+				<input type="button" id="buscarPorID" value="Buscar">
+			</div>	
+
+			<div class="container-fluid inputs">
+				<input type="number" placeholder="Buscar por valor de horas" id="buscaValor">
+				<input type="button" id="buscarPorValor" value="Buscar">
+			</div>
+			<div class="container-fluid inputs">
+				<input type="text" placeholder="Buscar por etiquetas" id="buscaTag">
+				<input type="button" id="buscarPorTag" value="Buscar">
+			</div>
+
+		</form>
+
     </div>
    
 <script>
 
     var lista = [];
+    let oficios = [];
         lista[0] = new Servei("Inglés", "Pepe", new Date("2019-10-12"), "1230", 2, 1);
         lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), "1100", 2, 1);
-        lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2.5, 1.2);
-        lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 0.8);
-        lista[4] = new Servei("Paseador de perros", "Miguel", new Date("2019-10-19"), "800", 1.5, 0.8);
-        lista[5] = new Servei("Guitarra", "Pedro", new Date("2019-11-01"), "730", 1, 0.8);
-        lista[6] = new Servei("Paseador de perros", "Alberto", new Date("2019-10-16"), "1100", 1, 0.8);
-    imprimeLista();
+        lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2, 1);
+        lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 3);
+        lista[4] = new Servei("Paseador de perros", "Miguel", new Date("2019-10-19"), "800", 1.5, 2);
+        lista[5] = new Servei("Guitarra", "Pedro", new Date("2019-11-01"), "730", 1, 2);
+        lista[6] = new Servei("Paseador de perros", "Alberto", new Date("2019-10-16"), "1100", 1, 3);
     creaDivs();
+    creaLista();
+
+
 
     $(document).ready(function(){
-      $("#b1").click(function(){
-        $("div, p, b,h1").css({"background-color":"white"});
-        var vT1 = $("#t1").val();
-        var eSeleccionat = $("#"+vT1);
-        eSeleccionat.css({"background-color":"red"});
+      $("#buscarPorValor").click(function(){
+        $("p").css({"background-color":"white"});
+        var bV = $("#buscaValor").val();
+        var buscado = $(".v"+bV);
+        buscado.css({"background-color":"red"});
+        console.log(buscado, bV);
+
       });
-      $("#b2").click(function(){
-        $("div, p, b, h1").css({"background-color":"white"});
-        var vT2 = $("#t2").val();
-        var eSeleccionat = $("."+vT2);
-        eSeleccionat.css({"background-color":"red"});
+      $("#buscarPorID").click(function(){
+        $("p").css({"background-color":"white"});
+        var bID = $("#buscaID").val();
+        var buscado = $("#"+bID);
+        buscado.css({"background-color":"red"});
       });
-      $("#b3").click(function(){
-        $("div, p, b, h1").css({"background-color":"white"});
-        var vT3 = $("#t3").val();
-        var eSeleccionat = $(vT3);
-        eSeleccionat.css({"background-color":"red"});
+      $("#buscarPorTag").click(function(){
+      	$("p, div, input, h5").css({"background-color":"white"});
+      	var bTag = $("#buscaTag").val();
+      	var buscado = $(bTag);
+      	buscado.css({"background-color":"red"});
       });
     });
 </script>
