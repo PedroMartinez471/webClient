@@ -1,0 +1,60 @@
+<!-- a) Create a web page with 2 paragraphs (<p>). And write a script using jQuery to catch the click event on the 2nd paragraph. When you click on the 2nd paragraph an alert message "You pressed on 2nd Paragraph" must appear.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../../../jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<table id="t1">
+		<tr id="tr11">
+			<th>OFF</th>
+			<th>OFF</th>
+		</tr>
+		<tr id="tr12">
+			<td>OFF</td>	
+			<td>OFF</td>	
+		</tr>
+		<tr id="tr13">
+			<td>OFF</td>
+			<td>OFF</td>
+		</tr>	
+
+	</table>
+	<br><br>
+	<table id="t2">
+		<tr id="tr21">
+			<th>OFF</th>
+			<th>OFF</th>
+		</tr>
+		<tr id="tr22">
+			<td>OFF</td>	
+			<td>OFF</td>	
+		</tr>
+		<tr id="tr23">
+			<td>OFF</td>
+			<td>OFF</td>
+		</tr>	
+
+	</table>
+
+	<input type="button" id="ON" value="ON">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#ON").click(function(){
+				var x = $("#t1 td, #t1 th");
+				x.text("ON");
+			});
+		});
+		$(document).ready(function(){
+			$("#t2 tr").click(function(){
+				$(this).css("font-size","10px");
+			});
+		});
+
+	</script>
+
+</body>
+</html>

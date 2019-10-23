@@ -1,0 +1,28 @@
+<!-- a) Create a web page with 2 paragraphs (<p>). And write a script using jQuery to catch the click event on the 2nd paragraph. When you click on the 2nd paragraph an alert message "You pressed on 2nd Paragraph" must appear.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../../../jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+	<a href="..." id="linkCambiante">Link mágico cambiante</a>
+
+	<input class="but" type="button" value="google" id="google">
+	<input class="but" type="button" value="facebook" id="facebook">
+	<input class="but" type="button" value="twitter" id="twitter">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".but").click(function(){
+				var x = $(this).attr("value");
+				$("a").attr("href", "http://www."+x+".com/");
+			});
+		});
+
+	</script>
+
+</body>
+</html>
