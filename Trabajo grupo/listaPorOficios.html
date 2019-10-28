@@ -48,8 +48,7 @@
                 	}
 
                 }
-
-                
+ 
             }
 
             function creaDivs(){
@@ -69,6 +68,21 @@
                 var x = document.getElementById("servicios");
                 x.innerHTML = texto;
                 
+            }
+
+            function buscaFechas(){
+            	var maxDate = lista[0].getFechaDate().getTime();
+            	var indexMax = 0;
+            	var i = 0;
+
+            	for (const dates of lista){
+            		if( maxDate < lista[i].getFechaDate().getTime()){
+            			maxDate = lista[i].getFechaDate().getTime();
+            			indexMax = i;
+            		}
+            		i++;
+            	}
+            	return lista[indexMax].persona;
             }
 
         </script>
@@ -100,6 +114,8 @@
 
 		</form>
 
+		<input type="button" id="masCercano" value="Servicio más tarde" onclick="buscaFechas()">
+
     </div>
    
 <script>
@@ -107,7 +123,7 @@
     var lista = [];
     let oficios = [];
         lista[0] = new Servei("Inglés", "Pepe", new Date("2019-10-12"), "1230", 2, 1);
-        lista[1] = new Servei("Inglés", "Alberto", new Date("2019-10-15"), "1100", 2, 1);
+        lista[1] = new Servei("Inglés", "Alberto", new Date("2020-02-15"), "1100", 2, 1);
         lista[2] = new Servei("Guitarra", "Luisa", new Date("2019-10-20"), "1900", 2, 1);
         lista[3] = new Servei("Paseador de perros", "Juan", new Date("2019-10-16"), "700", 1, 3);
         lista[4] = new Servei("Paseador de perros", "Miguel", new Date("2019-10-19"), "800", 1.5, 2);
@@ -139,6 +155,12 @@
       	var buscado = $(bTag);
       	buscado.css({"background-color":"red"});
       });
+      $("#masCercano").click(function(){
+      	$("p, div, input, h5").css({"background-color":"white"});
+      	var bCercano = buscaFechas();
+      	var buscado = $("#"+bCercano);
+      	buscado.css({"background-color":"red"});
+      })
     });
 </script>
 </body>

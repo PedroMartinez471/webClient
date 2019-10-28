@@ -34,6 +34,10 @@ class Servei {
 		return horaBien;
 	}
 
+	getFechaDate(){
+		return this.fecha;
+	}
+
 	getFecha(){
 		var day = this.fecha.getDate();
 		var month = this.fecha.getMonth() + 1;
