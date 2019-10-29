@@ -85,6 +85,23 @@
             	return lista[indexMax].persona;
             }
 
+            function servicioMasProximo(servicio){
+            	var prox = 0, proxIndex = 0;
+            	var i = 0;
+
+            	for (const servicios of lista){
+            		if ( lista[i].trabajo == servicio ){
+            			if (prox > lista[i].getFechaDate().getTime()){
+            				prox = lista[i].getFechaDate().getTime();
+            				proxIndex = i;
+            			}
+            		}
+            		i++;
+            	}
+            	console.log(lista[proxIndex].persona);
+            	return lista[proxIndex].persona;
+            }
+
         </script>
 
     </head>
@@ -115,6 +132,11 @@
 		</form>
 
 		<input type="button" id="masCercano" value="Servicio más tarde" onclick="buscaFechas()">
+
+		<div class="container">
+			<input type="text" placeholder="¿Qué servicio buscas?" id="servicioMasProximo">
+			<input type="button" id="buscaProximo" value="Busca el más próximo">
+		</div>
 
     </div>
    
@@ -160,6 +182,13 @@
       	var bCercano = buscaFechas();
       	var buscado = $("#"+bCercano);
       	buscado.css({"background-color":"red"});
+      })
+      $("#buscaProximo").click(function(){
+      	$("p, div, input, h5").css({"background-color":"white"});
+      	var trBuscado = $("#servicioMasProximo").val();
+      	var trCercano = servicioMasProximo(trBuscado);
+      	trBuscado = $("#"+trCercano);
+      	trBuscado.css({"background-color":"red"});
       })
     });
 </script>
