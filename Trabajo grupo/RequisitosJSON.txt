@@ -1,0 +1,23 @@
+Taula de BBDD
+
+Servicios(ID, persona, tipo servicio, date(), Hora, durada, valor);
+Tipos de servicios(ID, nombre);
+
+con php tenemos que crear el JSON que muestra el contenido de tabla 1 (servicios.php) y el de la tabla 2 (tipos.php)
+
+
+Select dinámico:
+Será de tipos de servicios
+
+Hacemos un select de tipos y el resultado que nos deuvelva nos srive para montar los options de esa seleccion
+
+
+Usando el select anterior se debe cargar otro select de servicios que son de ese tipo
+
+
+
+Tabla html dinámia¡ca de servicios, montamos filas y columnas para ver el contenido de la tabla servicios de la BBDD con peticón AJAX y montamos los tr y td con ello
+
+
+
+Drop down de bootrstrap que permite links a las optiones. Hacemos dropdown de los nom res de servicios y cuando clikcemos debe ir al JSON de los servicios que son de ese tipo seleccionado
