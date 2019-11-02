@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+		input {
+			color: blue;
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+		<form>
+			<input type="text" placeholder="Inserte texto aquí">
+			<input type="text" name="">
+		</form>
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$("input").focus(function(){
+				$(this).css("color","red");
+			});
+			$("input").focusout(function(){
+				$(this).css("color","blue");
+			});
+		});
+	</script>
+
+</body>
+</html>

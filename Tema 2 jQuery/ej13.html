@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: lightgrey;
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+	</div>
+	<p></p>
+
+	<script>
+		$(document).ready(function(){
+			$("div").mouseover(setInterval(function() {
+				$("p").text("x: " + event.clientX + "\n" + "y: " + event.clientY);
+			}, 500));
+		});
+	</script>
+
+</body>
+</html>

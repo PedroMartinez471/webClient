@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+	<table id="t1">
+		<tr id="tr11">
+			<th>Primera línea</th>
+			<th>Primera línea segunda caja</th>
+		</tr>
+		<tr id="tr12">
+			<td>Segunda línea</td>	
+			<td>Segunda línea segunda caja</td>	
+		</tr>
+		<tr id="tr13">
+			<td>Tercera línea</td>
+			<td>Tercera línea segunda caja</td>
+		</tr>	
+
+	</table>
+	<br><br>
+	<div>
+		<input type="button" value="Fondo azul" id="blue">
+		<input type="button" value="Fondo rosa" id="pink">
+
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$("input").mousedown(function(){
+				var color = $(this).attr("id");
+				$("table").css("background-color", color);
+			});
+			$("input").mouseup(function(){
+				var color = $(this).attr("id");
+				$("table").css("background-color", "white");
+			});
+		});
+	</script>
+
+</body>
+</html>
