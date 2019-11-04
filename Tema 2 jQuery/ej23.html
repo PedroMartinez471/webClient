@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+
+	</style>
+
+</head>
+<body>
+	<a href="http://www.google.com">www.google.com</a><br>
+	<a href="http://www.facebook.es">www.facebook.es</a><br>
+	<a href="http://www.youtube.com">www.youtube.com</a><br>
+	<a href="http://www.eldiario.es">www.eldiario.es</a><br>
+
+	<script>
+		$(document).ready(function(){
+
+			if ( $("a").indexOf(".es") ){
+				$("a").css("background-color","red");
+			}
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+	</style>
+
+</head>
+<body>
+	<div id="1">
+		<p>Párrafo 1 de muchos</p>
+		<p>Párrafo 2 de muchos</p>
+		<p>Párrafo 3 de muchos</p>
+		<p>Párrafo 4 de muchos</p>
+		<p>Párrafo 5 de muchos</p>
+		<p>Párrafo 6 de muchos</p>
+		<p>Párrafo 7 de muchos</p>
+	</div>
+	<div id="2" style="display: none">
+		<p>Estos son otros párrafos más chulos</p>
+		<p>Más chulos y mejores</p>
+		<p>Estos son otros párrafos más chulos</p>
+		<p>Más chulos y mejores</p>
+		<p>Estos son otros párrafos más chulos</p>
+		<p>Más chulos y mejores</p>
+		<p>Párrafo 7 de muchos</p>
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$("div").click(function(){
+				$("div#1").toggle("fast");
+				$("div#2").toggle("slow");
+			});
+		});
+	</script>
+
+</body>
+</html>

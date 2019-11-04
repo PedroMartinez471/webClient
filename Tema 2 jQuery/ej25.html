@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+
+		div {
+			background-color: lightgrey;
+			width: 400px;
+			height: 50px;
+			margin: 3px;
+		}
+
+	</style>
+
+</head>
+<body>
+	<div id="resultado"></div>
+	<div id="2">
+		<form>
+			<input type="number" id="n1" value="Cargar al párrafo 1">
+			<input type="button" id="b2" value="Cargar al párrafo 2">
+		</form>
+	</div>
+	<input type="button" id="sum" value="Suma">
+	<input type="button" id="rest" value="Resta">
+	<input type="button" id="mult" value="Multiplicación">
+	<input type="button" id="divi" value="División">
+
+	<script>
+		$(document).ready(function(){
+			$("input").click(function(){
+				var x = $(this).attr("id");
+				var xy= x.substring(1, 2);
+				var divText = $("div#"+xy);
+				divText.load("texto1.txt", function(){
+					$("input").click(function(){
+						var x = $(this).attr("id");
+						var xy= x.substring(1, 2);
+						var divText = $("div#"+xy);
+						divText.load("texto2.txt");
+					});
+				});
+			});
+		});
+	</script>
+
+</body>
+</html>

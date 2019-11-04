@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery-3.4.1.min.js"></script>
+	<meta charset="utf-8"/>
+
+	<style type="text/css">
+
+		div {
+			background-color: lightgrey;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="1">
+		<p>Párrafo 1 de muchos</p>
+		<p>Párrafo 2 de muchos</p>
+		<p>Párrafo 3 de muchos</p>
+		<p>Párrafo 4 de muchos</p>
+		<p>Párrafo 5 de muchos</p>
+		<p>Párrafo 6 de muchos</p>
+		<p>Párrafo 7 de muchos</p>
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$("div").click(function(){
+				$(this).fadeTo("slow", 0.2);
+			});
+			$("div").dblclick(function(){
+				$(this).fadeTo("slow", 1);
+			});
+		});
+	</script>
+
+</body>
+</html>
