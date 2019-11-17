@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>Select JSON</title>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Selects Encadenados JSON</h1>
+        <form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Provincia</label>
+            <select id="selectProvincia" class="form-control">
+              <option value="0">Selecciona</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Model</label>
+            <select id="selectCiudad" class="form-control">
+            </select>
+          </div>
+        </form>
+        <br/>
+        <h4>Contingut del fitxer JSON 1:</h4>
+        <p id="json1"></p>
+        <h4>Contingut del fitxer JSON 2:</h4>
+        <p id="json2"></p>
+      </div>
+
+    <script>
+      $(document).ready(function(){
+        $( "#selectCiudad" ).prop( "disabled", true );
+        $("#selectProvincia").change(function(){
+          var idProvincia = $("#selectProvincia").val();
+          console.log(idProvincia);
+          $("#selectCiudad" ).prop( "disabled", false );
+          $("#selectCiudad").empty();
+          cargarCiudades(idProvincia);
+        });
+        function cargarProvincias() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $("#json1").html(this.responseText);
+              var select = JSON.parse(this.responseText);
+              for (c in select) {
+                var id = select[c].ID;
+                var nombre = select[c].Nombre;
+                var item = $("<option/>", {value:id, text:nombre});
+                $("#selectProvincia").append(item);
+              }
+            }
+          };
+          xhttp.open("GET", "Ej1-Provincias.php", true);
+          xhttp.send();
+        }
+        function cargarCiudades(idProvincia) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $("#json2").html(this.responseText);
+              var select = JSON.parse(this.responseText);
+              var item0 = $("<option/>", {value:"0", text:"Selecciona"});
+              $("#selectCiudad").append(item0);
+              for (c in select) {
+                var id = select[c].ID;
+                var nombre = select[c].Nombre;
+                var item = $("<option/>", {value:id, text:nombre});
+                $("#selectCiudad").append(item);
+              }
+            }
+          };
+          xhttp.open("GET", "Ej1-Ciudades.php?ID_PROVINCIA="+idProvincia, true);
+          xhttp.send();
+        }
+        cargarProvincias();
+      });
+    </script>
+  </body>
+</html>
