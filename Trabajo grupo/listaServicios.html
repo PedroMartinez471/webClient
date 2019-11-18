@@ -18,6 +18,32 @@ MODIFICACIÓN:
 Un texto donde indicar el trabajo y después un botón que nos diga quien ofrece ese trabajo con la fecha más próxima. 
 
 Un botón que nos diga quien ofrece el serivicio más tarde (sin indicar qué servicio)
+	
+
+AD-HOC AJAX
+
+TXT:
+lista desplegable con servicios, botón para buscar.
+petición ajax solicitando todas las persona que ofrecen ese servicio y mostrar en div
+
+XML: <personas>
+	<personaZ
+		<nom>
+		<data>
+		<servei>
+		...
+	</persona>
+	...
+        </personas>
+
+tendremos un botón que seaLoad, al pulsarlo hacemos petición ajax, muestra en tabla HTML muestra la información de todos. TODA de todos
+
+PHP
+array servicios en php, con nombre y servicio de cada uno
+Tenemos que pasarle como parámetro el nombre, el fichero tiene que hacer un echo del array servei con el nombre pasado por parámetro.
+En el HTML tendremos un input text con un botón para introducir el nombre de la persona para hacer una petición ajax con get y otro con post
+Mostrar el servicio que da esa persona con un alert o un div, como queramos.
+
 	-->
 
 <!DOCTYPE html>
