@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Buscador de personas y/o personajes:</h3>
+
+<p>Sugerencia: <span id="txtHint"></span></p> 
+
+<p>Nombre a buscar: <input type="text" id="txt1" onkeyup="sugiere(this.value)"></p>
+
+<script>
+function sugiere(str) {
+  var xhttp;
+  if (str.length == 0) { 
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "users.php?q="+str, true);
+  xhttp.send();   
+}
+</script>
+
+</body>
+</html>

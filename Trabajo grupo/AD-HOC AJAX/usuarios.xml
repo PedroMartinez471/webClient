@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<USERS>
+  <USER>
+    <NAME>Raquel</NAME>
+    <AGE>23</AGE>
+    <COUNTRY>USA</COUNTRY>
+    <DIRECTION>C/ Hola que tal</DIRECTION>
+  </USER>
+  <USER>
+    <NAME>Miguel</NAME>
+    <AGE>34</AGE>
+    <COUNTRY>SPAIN</COUNTRY>
+    <DIRECTION>C/ Otra calle</DIRECTION>
+  </USER>
+  <USER>
+    <NAME>Felipe</NAME>
+    <AGE>33</AGE>
+    <COUNTRY>UK</COUNTRY>
+    <DIRECTION>C/ yo que sé</DIRECTION>
+  </USER>
+  <USER>
+    <NAME>Guti</NAME>
+    <AGE>40</AGE>
+    <COUNTRY>PORTUGAL</COUNTRY>
+    <DIRECTION>C/ No hay calles en Portugal</DIRECTION>
+  </USER>
+</USERS>
