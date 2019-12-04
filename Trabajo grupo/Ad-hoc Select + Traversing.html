@@ -86,11 +86,16 @@
             }
 
             function servicioMasProximo(servicio){
-            	var prox = 0, proxIndex = 0;
+            	var prox = 0;
+            	var proxIndex = 0;
             	var i = 0;
 
             	for (const servicios of lista){
             		if ( lista[i].trabajo == servicio ){
+            			if (prox == 0){
+            				prox = lista[i].getFechaDate().getTime();
+            				proxIndex = i;
+            			}
             			if (prox > lista[i].getFechaDate().getTime()){
             				prox = lista[i].getFechaDate().getTime();
             				proxIndex = i;
@@ -98,7 +103,7 @@
             		}
             		i++;
             	}
-            	console.log(lista[proxIndex].persona);
+            	
             	return lista[proxIndex].persona;
             }
 
