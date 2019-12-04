@@ -1,6 +1,6 @@
 <?php
   header("Content-Type: application/json; charset=UTF-8");
-  $conn = new mysqli("localhost", "pedro", "1234", "cronose");
+  $conn = new mysqli("localhost", "pedro", "1234", "pruebasweb");
   $stmt = $conn->prepare("SELECT * FROM user");
   $stmt->execute();
   $result = $stmt->get_result();
