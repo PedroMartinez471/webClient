@@ -10,7 +10,7 @@ class Servei {
 	}
 
 	valor(){
-		return this.persona + " -> " + this.valor;
+		return this.valor;
 	}
 
 

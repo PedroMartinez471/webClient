@@ -27,7 +27,7 @@
   <body>
 
     <div class="container">
-      <form class="col-center col-6 border shadow">
+      <div class="col-center col-6 border shadow">
         <div class="form-group">
           <label>Usuario</label>
           <input class="form-control" placeholder="Introduzca su usuario" id="user"></input>
@@ -37,7 +37,7 @@
           <input class="form-control" type="Password" placeholder="Password" id="pswrd"></input>
         </div>
         <button class="btn btn-primary" id="comprobacion">Enviar</button>
-      </form> 
+      </div> 
     </div>
 
     <script type="text/javascript">
@@ -50,14 +50,14 @@
           var name = $("#user").val;
           console.log(name);
 
-          if ( name.size() < 5 ){
+          if ( name.length < 5 ){
             alert("Usuario demasiado corto")
           }
 
           var pswd = $("#pswrd").val;
           console.log(pswd);
 
-          if ( pswd.lenght() < 5 ){
+          if ( pswd.length < 5 ){
             alert("Contraseña demasiado corta")
           }else if( pswd.indexOf("\D\W") ){
             alert("BIEN")
