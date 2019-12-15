@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<title>Prueba</title>
+</head>
+<body>
+
+	<div class="container">
+		<h1 class="">INSCRIPCIÓN NUEVOS USUARIOS</h1>
+		<div class="form-group">
+			<label for="selectProvincia">Provincia</label>
+			<select id="selectProvincia" class="form-control">
+				<option value="0">Selecciona</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="city">Ciudad</label>
+			<select id="city" class="form-control">
+				<option value="0">Selecciona una provincia</option>
+			</select>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group col" id="name">
+				<label id="nameLabel" class="control-label" for="nameInput">Nombre:</label>
+				<input id="nameInput" class="form-control" type="text" placeholder="Text...">
+				<p class="text-danger invisible" id="nameP">Mínimo 4 letras</p>
+			</div>
+			<div class="form-group col">
+				<label class="control-label" for="Surname">Primer apellido:</label>
+				<input id="Surname" class="form-control" type="text" placeholder="Text...">
+			</div>
+			<div class="form-group col">
+				<label class="control-label" for="secondSurname">Segundo apellido:</label>
+				<input id="secondSurname" class="form-control" type="text" placeholder="Text...">
+			</div>
+		</div>
+		<p id="json1"></p>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#city").prop("disabled", true);
+			$("#selectProvincia").change(function(){
+				var prov = $("#selectProvincia").val();
+				$("#city").prop("disabled", false);
+				$("#city").empty();
+				cargarCiudades(prov);
+			});
+
+			$("#nameInput").blur(function(){
+				var count = $("#nameInput").val().length;
+				if( count < 4 ){
+					$("#nameP").removeClass("invisible");
+					$("#nameP").addClass("visible");
+					$("#nameInput, #nameLabel").addClass("is-invalid text-danger");
+				}else{
+					$("#nameP").removeClass("visible");
+					$("#nameP").addClass("invisible");
+					$("#nameInput, #nameLabel").removeClass("is-invalid text-danger");
+					$("#nameInput, #nameLabel").addClass("is-valid text-success");
+				}
+			});
+
+			function cargarProvincias(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						$("#json1").html(this.responseText);
+						var prov = JSON.parse(this.responseText);
+						for (p in prov){
+							var id = prov[p].ID;
+							var nombre = prov[p].Nombre;
+							var item = $("<option/>", {value:id, text:nombre});
+							$("#selectProvincia").append(item);
+						}
+					}
+				};
+				xhttp.open("GET", "Provincias.php", false);
+				xhttp.send();
+			}
+
+			function cargarCiudades(idProv){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						$("#json2").html(this.responseText);
+						var city = JSON.parse(this.responseText);
+						for (c in city){
+							var id = city[c].ID;
+							var nombre = city[c].Nombre;
+							var item = $("<option/>", {value:id, text:nombre});
+							$("#city").append(item);
+						}
+					}
+				};
+				xhttp.open("GET", "cities.php?ID_PROVINCIA="+idProv, true);
+				xhttp.send();
+			}
+
+			cargarProvincias();
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<title>Prueba</title>
+</head>
+<body>
+	<div class="container bg-primary">
+		<h1>TIENDA</h1>
+		<div class="card-deck" id="grid">
+		</div>
+		<p id="json"></p>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			function cargaProductos() {
+	          var xhttp = new XMLHttpRequest();
+	          xhttp.onreadystatechange = function() {
+	            if (this.readyState == 4 && this.status == 200) {
+	              $("#json").html(this.responseText);
+	              var prod = JSON.parse(this.responseText);
+
+	              for ( p in prod ){
+
+	                var id = prod[p].ID;
+	                var nombre = prod[p].nombre;
+	                var precio = prod[p].precio + " €";
+	                var cantidad = "Cantidad " + prod[p].cantidad;
+	                var color = "Color: " + prod[p].color;
+	                var img = prod[p].imagen;
+	                
+	                var colDIV = $("<div/>",{class:"col-sm-6"});
+	                var cardDIV = $("<div/>", {class:"card h-100"});
+	                var cardBody = $("<div/>",{class:"card-body"});
+	                var cardH4 = $("<h4/>",{class:"card-title", text:nombre});
+	                var cardP = $("<p/>",{class:"card-text", text:precio});
+	                var cardP2 = $("<p/>",{class:"card-text", text:cantidad});
+	                var cardP3 = $("<p/>",{class:"card-text", text:color});
+	                var cardIMG = $("<img/>",{src:"img/"+img, class:"card-img"});
+
+	                cardDIV.append(cardIMG);
+	                cardBody.append(cardH4, cardP, cardP2, cardP3);
+	                cardDIV.append(cardBody);
+
+	                colDIV.append(cardDIV);	   
+	                $("#grid").append(colDIV);           }
+	            }
+	          };
+	          xhttp.open("GET", "productos.txt", true);
+	          xhttp.send();
+	        }
+	        cargaProductos();
+		});
+	</script>
+</body>
+</html>
