@@ -1,0 +1,7 @@
+<h1>HOLA</h1>
+<p>Probando Ajax.</p>
+<ul>
+  <li>Esto imprime</li>
+  <li>o no imprime</li>
+  <li>Ya veremos</li>
+</ul>

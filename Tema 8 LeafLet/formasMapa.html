@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- css -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+         crossorigin=""/>
+      
+      <!-- js -->
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+         integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+         crossorigin=""></script>
+
+  </head>
+  <body>
+    <h1>LEAFLET - Circles. </h1>
+    <div id="meuMapa" style="width:600px;height:400px;"></div>
+
+    <p id="demo"></p>
+
+<script>
+  // Mapa centrat a latitud/longuitud i zoom
+  var m = L.map('meuMapa').setView([39.56637682250297, 3.2037112138683597], 9);
+  // Imatges del mapa (OpenStreetMap + MapBox)
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoicHJvZmV3ZWIiLCJhIjoiY2pwM3JxeHR3MGF6cjNrcXcwbmh0MGZtOCJ9.mxvmjOpVymwltGGlcxHx8g'
+  }).addTo(m);
+
+  $(document).ready(function(){
+    function loadCiudad() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          $("#demo").html(this.responseText);
+          var cities = JSON.parse(this.responseText);
+          L.geoJSON(cities).addTo(m);
+        }
+      };
+      xhttp.open("GET", "coordenadas.php?type=point", true);
+      xhttp.send();
+    }
+    loadCiudad();
+  });
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>Table</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Table</h1>
+      <table id="tabla" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">fecha</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Valor</th>
+            <th scope="col">tipo</th>
+            <th scope="col">Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <br/>
+      <h4>Contingut del fitxer JSON:</h4>
+      <p id="demo"></p>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        function cargaservicios() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $("#demo").html(this.responseText);
+              var servicios = JSON.parse(this.responseText);
+              var i=1;
+              for (c in servicios) {
+                var id = servicios[c].id;
+                var nombre = servicios[c].persona;
+                var servicio = servicios[c].servicio;
+                var fecha = servicios[c].fecha;
+                var duracion = servicios[c].durada;
+                var valor = servicios[c].valor;
+                var tipo = servicios[c].tipo;
+                var hora = servicios[c].hora;
+                var otroTR = $("<tr/>");
+                var otroTH = $("<th/>", {scope:'row', text:i});
+                otroTR.append(otroTH);
+                
+                var otroTD = $("<td/>",{text:id});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:nombre});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:servicio});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:fecha});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:duracion});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:valor});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:tipo});
+                otroTR.append(otroTD);
+                otroTD = $("<td/>",{text:hora});
+                otroTR.append(otroTD);
+                $("#tabla").children("tbody").append(otroTR);
+                i++;
+              }
+            }
+          };
+          xhttp.open("GET", "todosServicios.php", true);
+          xhttp.send();
+        }
+        cargaservicios();
+      });
+    </script>
+  </body>
+</html>

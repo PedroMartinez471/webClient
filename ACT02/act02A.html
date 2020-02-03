@@ -1,0 +1,173 @@
+<html>
+<head>
+<style>
+#taula {width:50%;float:left;}
+#historial {height: 400px; margin:0px 0px 0px 450px; background-color:yellow;}
+</style>
+<script src="jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+<h1>PARKING</h1>
+<form action="#" style="background-color:#AAAAAA;">
+<fieldset>
+<legend>Parking Admininstration</legend>
+<b>PLATE NUMBER:</b> <input type="text" id="t1" value="" size="5" />
+<b>PARKING PLACE:</b> <select id="s1">
+  <option class="op" value="0">Select one</option>
+  <option class="op" value="0A">0A</option>
+  <option class="op" value="0B">0B</option>
+  <option class="op" value="0C">0C</option>
+  <option class="op" value="1A">1A</option>
+  <option class="op" value="1B">1B</option>
+  <option class="op" value="1C">1C</option>
+  <option class="op" value="2A">2A</option>
+  <option class="op" value="2B">2B</option>
+  <option class="op" value="2C">2C</option>
+</select>
+<button id="b1" >PARK IN</button>
+<button id="b2" >PARK OUT</button>
+<button id="b3" >NUM CARS</button>
+<button id="b4" >SORT</button>
+</fieldset>
+</form>
+<hr/>
+<div id="t">
+  <table id="taula">
+  </table>
+</div>
+<div id="historial">
+<h1>Historial</h1>
+  <ol id="ol">
+  </ol>
+</div>
+<script>
+  $(document).ready(function(){
+
+    let lista = [];
+    let plazas = [];
+    let numC = 0;
+
+    for (var n = 0; n < 3; n++) { 
+      plazas[n] = new Array();
+    } 
+
+    for (var n = 0; n < 3; n++) { 
+      for (var c = 0; c < 3; c++) { 
+          plazas[n][c] = "empty.png"; 
+      } 
+    } 
+
+    $("#b1").click(function(){
+
+      let matricula = $("#t1").val();
+      let letras = $("#s1").children("option:selected").val();
+
+      let l2 = letras.substr(1, 1);
+
+      if ( l2 == "A" )
+        val2 = 0;
+      else if ( l2 == "B")
+        val2 = 1;
+      else 
+        val2 = 2;
+
+      let val1 = letras.substr(0, 1);
+
+      if( plazas[val1][val2] == "empty.png" ){
+        numC++;
+        historial(matricula, letras, "entrada");
+      }
+      else
+        alert("Plaza ya ocupada");
+
+      plazas[val1][val2] = "car.png";
+      showParking();
+    });
+
+    $("#b2").click(function(){
+
+      let matricula = $("#t1").val();
+      let letras = $("#s1").children("option:selected").val();
+
+      let l2 = letras.substr(1, 1);
+
+      if ( l2 == "A" )
+        val2 = 0;
+      else if ( l2 == "B")
+        val2 = 1;
+      else 
+        val2 = 2;
+
+      let val1 = letras.substr(0, 1);
+
+      if( plazas[val1][val2] == "car.png" )
+        numC--;
+
+      plazas[val1][val2] = "empty.png";
+      showParking();
+      historial(matricula, letras, "salida");
+    });
+
+    $("#b3").click(function(){
+        alert("Número de coches en el parking: " + numC);
+    });
+
+  	showParking();
+
+    function showParking(){
+
+      $("#taula").empty();
+
+      let tabla = $("<tr/>");
+      let t1 = $("<tr>A</tr>");
+      let t2 = $("<tr>B</tr>");
+      let t3 = $("<tr>C</tr>");
+
+      $("#taula").append(tabla);
+      $("#taula").append(t1);
+      $("#taula").append(t2);
+      $("#taula").append(t3);
+
+      for (var n = 0; n < 3; n++) { 
+
+        $("#taula").append(n);
+        for (var c = 0; c < 3; c++) {
+          const i = plazas[n][c];
+          const img = $("<img/>",{src:i, class:"img"});
+            $("#taula").append(img); 
+        } 
+        $("#taula").append("<br>");
+      }
+    }
+
+    $("#b4").click(function(){
+        let temp = numC;
+
+        for (var n = 0; n < 3; n++) { 
+          for (var c = 0; c < 3; c++) { 
+            if ( temp > 0 )
+              plazas[n][c] = "car.png"; 
+            else
+              plazas[n][c] = "empty.png";
+
+            temp--;
+          } 
+        } 
+
+        showParking();
+        lista.push("<li/>" + new Date() + " Parking reordenado");
+
+        $("#ol").append(lista);
+    });
+
+    function historial(matricula, letras, estado){
+      lista.push("<li/>" + new Date(), "car " + matricula + " ", "from " + letras, + " " + estado);
+
+      $("#ol").append(lista);
+    }
+
+  });
+</script>
+</body>
+</html>

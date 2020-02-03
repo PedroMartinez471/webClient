@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+  <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<h1>PARKING</h1>
+<ol id="ol">
+</ol>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    function cargaJSON(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var prov = JSON.parse(this.responseText);
+            for (p in prov){
+              var timestamp_in = prov[p].timestamp_in;
+              var timestamp_out = prov[p].timestamp_out;
+              var plate_number = prov[p].plate_number;
+              var price = prov[p].price;
+              var minutes = prov[p].minutes;
+
+              let i1 = timestamp_in;
+              let i2 = timestamp_out;
+              let i3 = plate_number;
+              let i4 = price;
+              let i5 = minutes;
+
+              $("#ol").append("<li/>", "Car ", p, "<br>Entrada: ", i1, "<br> Salida: ", i2, "<br> Matrícula: ", i3, "<br> Precio: ", i4, "<br> Minutos: ", i5);
+            }
+          }
+        };
+        xhttp.open("GET", "json.txt", true);
+        xhttp.send();
+      }
+    cargaJSON();
+  });
+</script>
+</body>
+</html>

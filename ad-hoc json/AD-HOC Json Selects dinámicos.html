@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+      <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>Select JSON</title>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Selects Encadenats JSON</h1>
+        <form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Tipos</label>
+            <select id="TiposOfrecidos" class="form-control">
+              <option value="0">Selecciona</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Servicios</label>
+            <select id="ServiciosDisponibles" class="form-control">
+            </select>
+          </div>
+        </form>
+        <br/>
+        <h4>JSON 1:</h4>
+        <p id="json1"></p>
+        <h4>JSON 2:</h4>
+        <p id="json2"></p>
+      </div>
+
+    <script>
+      $(document).ready(function(){
+        $( "#ServiciosDisponibles" ).prop( "disabled", true );
+        $("#TiposOfrecidos").change(function(){
+          var idTipos = $("#TiposOfrecidos").val();
+          $("#ServiciosDisponibles" ).prop( "disabled", false );
+          $("#ServiciosDisponibles").empty();
+          loadServicios(idTipos);
+        });
+        function LoadTipos() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $("#json1").html(this.responseText);
+              var tipos = JSON.parse(this.responseText);
+              for (c in tipos) {
+                var idTipo = tipos[c].id;
+                var nombreTipo = tipos[c].Nombre;
+                var item = $("<option/>", {value:idTipo, text:nombreTipo});
+                $("#TiposOfrecidos").append(item);
+              }
+            }
+          };
+          xhttp.open("GET", "tipos.php", true);
+          xhttp.send();
+        }
+        function loadServicios(idTipos) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $("#json2").html(this.responseText);
+              var tipos = JSON.parse(this.responseText);
+              var item0 = $("<option/>", {value:"0", text:"Selecciona"});
+              $("#ServiciosDisponibles").append(item0);
+              for (c in tipos) {
+                var servi = tipos[c].servicio;
+                var nombreTipo = tipos[c].persona;
+                var item = $("<option/>", {value:servi, text:nombreTipo});
+                $("#ServiciosDisponibles").append(item);
+              }
+            }
+          };
+          xhttp.open("GET", "servicios.php?tipo="+idTipos, true);
+          xhttp.send();
+        }
+        LoadTipos();
+      });
+    </script>
+  </body>
+</html>
