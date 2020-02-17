@@ -1,6 +1,6 @@
 <?php
 $conn = new mysqli("localhost", "pedro", "1234", "pruebasweb");
-$stmt = $conn->prepare("SELECT * FROM coordenadas");
+$stmt = $conn->prepare("SELECT * FROM pueblos");
 $stmt->execute();
 $result = $stmt->get_result();
 # Build GeoJSON feature collection array
