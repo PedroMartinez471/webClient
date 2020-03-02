@@ -1,0 +1,51 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#555555",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#fca65e",
+        "fill-opacity": 0.5,
+        "Title": "Campos"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              3.010942,
+              39.433781
+            ],
+            [
+              3.017267,
+              39.437678
+            ],
+            [
+              3.020388,
+              39.434961
+            ],
+            [
+              3.027046,
+              39.432647
+            ],
+            [
+              3.028021,
+              39.427407
+            ],
+            [
+              3.022157,
+              39.425107
+            ],
+            [
+              3.015813,
+              39.427618
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
